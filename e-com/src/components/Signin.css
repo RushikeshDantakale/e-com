@@ -1,0 +1,16 @@
+.backgroundImage{
+ background-image: url(../images/signBackgroundImage.jpg);
+ height: 100vh;
+
+ background-repeat: no-repeat;
+ background-size: cover;
+ 
+
+}
+
+.loginImage{
+    background-image: url(../images/loginImage.png);
+
+ background-repeat: no-repeat;
+ background-size: cover;
+}
