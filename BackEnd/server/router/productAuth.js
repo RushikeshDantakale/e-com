@@ -10,6 +10,10 @@ const cors = require('cors');
 const multer = require('multer');
 const upload = multer({dest: 'uploads/Shirts/'});
 
+const pantUpload = multer({dest : 'uploads/Pants/'});
+
+const mobileUpload = multer({dest : 'uploads/Mobiles/'});
+
 
 
 
@@ -51,9 +55,20 @@ router.get('/category',async (req,res)=>{
 })
 
 
-router.get('/shirt',async (req,res)=>{
+router.get('/pant',async (req,res)=>{
 
-    const data = await Shirt.find({});
+    const data = await Pant.find({});
+    if(!data){
+        res.status(402).json({error:"there is no data!"})
+           }else{
+           res.send(data);
+           }
+
+})
+
+router.get('/mobile',async (req,res)=>{
+
+    const data = await Mobile.find({});
     if(!data){
         res.status(402).json({error:"there is no data!"})
            }else{
@@ -66,20 +81,10 @@ router.get('/shirt',async (req,res)=>{
 
 
 router.post('/shirt/upload',upload.single('image'), async (req, res)=>{
- 
-     
 
-     
-
-    
-
-     
-  
     const {title , desc , price , quantity } = req.body;
    const imageUrl =req.file.path;
 
-  
-   
     try{
     if(!title || !desc || !price || !quantity || !imageUrl){
             res.status(402).json({error:"Please fill the fields properly!"});
@@ -111,6 +116,85 @@ router.post('/shirt/upload',upload.single('image'), async (req, res)=>{
 
 
 })
+
+
+router.post('/pant/upload',pantUpload.single('image'), async (req, res)=>{
+
+    const {title , desc , price , quantity } = req.body;
+   const imageUrl =req.file.path;
+
+    try{
+    if(!title || !desc || !price || !quantity || !imageUrl){
+            res.status(402).json({error:"Please fill the fields properly!"});
+            fs.unlink(imageUrl, (err) => {
+                if (err) {
+                  console.error(err);
+                }else{
+                    console.log('removed successfully!');
+                }
+              
+                //file removed
+              })
+        }else{
+    const itemExist = await Pant.findOne({title:title})
+
+    if(itemExist){
+        res.status(402).json({error:"item already exists!"});
+    }else{
+     const shirt = new Pant({title ,imageUrl ,desc , price , quantity});
+
+     await shirt.save();
+
+    res.json({message:"product uploaded successfully!"})
+  }
+}
+}catch(error){
+    res.status(402).json({error:"error occurred while uploading!"})
+}
+
+
+})
+
+
+
+router.post('/mobile/upload',mobileUpload.single('image'), async (req, res)=>{
+
+    const {title , desc , price , quantity , frontCamera , rearCamera } = req.body;
+   const imageUrl =req.file.path;
+
+    try{
+    if(!title || !desc || !price || !quantity || !imageUrl){
+            res.status(402).json({error:"Please fill the fields properly!"});
+            fs.unlink(imageUrl, (err) => {
+                if (err) {
+                  console.error(err);
+                }else{
+                    console.log('removed successfully!');
+                }
+              
+                //file removed
+              })
+        }else{
+    const itemExist = await Mobile.findOne({title:title})
+
+    if(itemExist){
+        res.status(402).json({error:"item already exists!"});
+    }else{
+     const shirt = new Mobile({title ,imageUrl ,desc , price , quantity});
+
+     await shirt.save();
+
+    res.json({message:"product uploaded successfully!"})
+  }
+}
+}catch(error){
+    res.status(402).json({error:"error occurred while uploading!"})
+}
+
+
+})
+
+
 
 
 router.delete('/shirt/delete', async (req,res)=>{

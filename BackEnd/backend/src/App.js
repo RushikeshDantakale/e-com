@@ -22,6 +22,8 @@ function App() {
 
   const [showModal, setShowModal] =useState(false);
 
+  const [product, setProduct] = useState({title:'',imageUrl:'', desc:'' , price: ''});
+
   const dispatch = useDispatch();
 
   const render = useSelector((state)=> state.rootReducer.render);
@@ -84,19 +86,36 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () =>{
 
+      if(toggle===1){
         try{
-   const res = await axios('http://localhost:4000/shirt');
-   setDataProduct(res.data);
-   console.log(render , 77);
-        }catch(error){
-console.log(error);
-        }
-
+          const res = await axios('http://localhost:4000/shirt');
+          setDataProduct(res.data);
+          console.log(render , 91);
+               }catch(error){
+       console.log(error);
+               }
+      }else if(toggle===2){
+        try{
+          const res = await axios('http://localhost:4000/pant');
+          setDataProduct(res.data);
+          console.log(render , 99);
+               }catch(error){
+       console.log(error);
+               }
+      }else{
+        try{
+          const res = await axios('http://localhost:4000/mobile');
+          setDataProduct(res.data);
+          console.log(render , 107);
+               }catch(error){
+       console.log(error);
+               }
+              }
 
 };
 fetchProducts();
 
-}, [render , refresh]);
+}, [render , refresh, toggle]);
 
 
 const checkSubmit = ()=> {
@@ -114,7 +133,7 @@ setEditPr(product);
 }
 
 const editOrView = () =>{
-  setEditInput(prevValue => !prevValue);
+  setEditInput(!editInput);
 }
 
   return (<>
@@ -147,25 +166,30 @@ const editOrView = () =>{
 
 
                 {/* content here */}
+                {console.log(editPr)}
                 <div  className={inputDiv}>
-                <input className={inputStyle} type="text" value={editOrView?null:editPr.title} />
+                <input className={inputStyle} type="text" value={editInput?null:editPr.title} />
                 <div  className="cursor-pointer " onClick={editOrView}><BorderColorIcon/></div>
                  </div>
 
                  <div  className={inputDiv}>
-                <input className={inputStyle} type="text" value={editOrView?null:editPr.title}/>
+                <input className={inputStyle} type="text" value={editInput?null:editPr.desc}/>
                 <div className="cursor-pointer " onClick={editOrView}><BorderColorIcon/></div>
                  </div>
 
                  <div  className={inputDiv}>
-                <input className={inputStyle} type="text" value={editOrView?null:editPr.title} />
+                <input className={inputStyle} type="text" value={editInput?null:editPr.price} />
                 <div className="cursor-pointer "  onClick={editOrView}><BorderColorIcon/></div>
+                 </div>
+
+                 <div className="">
+                  <img className="h-[200px] w-[100%]" src={`http://localhost:4000/${editPr.imageUrl}`} alt="img" />
                  </div>
                  <div className="flex items-center justify-center gap-4 mt-[10px]">
                  <button className="bg-red-500 rounded-lg w-[100%] p-[10px]  text-white font-bold hover:bg-red-300"
                  onClick={()=>setShowModal(false)}
                  >Cancel</button>
-                 <button className="bg-green-500 rounded-lg w-[100%] p-[10px]  text-white font-bold hover:bg-green-300">Submit</button>
+                 <button className="bg-green-500 rounded-lg w-[100%] p-[10px]  text-white font-bold hover:bg-green-300">Update</button>
                  </div>
                  
           
@@ -177,7 +201,7 @@ const editOrView = () =>{
       ) : null}
     
 <div className="flex items-center justify-center mx-[200px]">
-<div className="w-[400px] h-[680px] mx-auto border border-2 p-4 bg-white mt-4 rounded-lg shadow-2xl flex-1  ">
+<div className="w-[400px] h-[680px] mx-auto border border-2 p-4 bg-white mt-4 rounded-lg shadow-2xl flex-1 overflow-y-auto  ">
 <div className="flex ">
 <button className={`${tab} rounded-l-lg ${toggle===1 ? activeTab :inActiveTab}`} onClick={()=>handleClick(1)}>Shirts</button>
 <button className={`${tab}  ${toggle===2 ?activeTab:inActiveTab}`} onClick={()=>handleClick(2)}>Pants</button>
@@ -191,7 +215,7 @@ const editOrView = () =>{
 </div>
 
 <div className="w-[400px] h-[680px] mt-4 ml-[20px] rounded-lg shadow-2xl border-2 border-gray-200 flex-[1.6] overflow-h-auto  overflow-y-auto">
-<p className="font-bold text-[25px] fixed bg-white w-[43%] pt-[20px] pl-[20px] border-b-2 border-gray-400 flex justify-between items-center">Your Shirt data is below <button className="bg-lime-300 mr-[25px] p-[5px] my-[10px] rounded-xl  text-[20px]" onClick={refreshData}>Refresh</button></p> 
+<p className="font-bold text-[25px] fixed bg-white w-[43%] pt-[20px] pl-[20px] border-b-2 border-gray-400 flex justify-between items-center">Your {(toggle===1 && <p>Shirt</p>) || (toggle===2 && <p> Pants</p>) || (toggle===3 && <p>Mobile</p>) } data is below <button className="bg-lime-300 mr-[25px] p-[5px] my-[10px] rounded-xl  text-[20px]" onClick={refreshData}>Refresh</button></p> 
 
 <div className=" flex flex-wrap p-[10px] gap-4 mt-[60px] ">  {dataProduct.map((product,index)=>
 
