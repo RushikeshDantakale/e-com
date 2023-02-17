@@ -1,5 +1,4 @@
 node_modules/
-.env
 BackEnd/server/uploads/Shirts
 BackEnd/server/uploads/Pants
 BackEnd/server/uploads/Mobiles
