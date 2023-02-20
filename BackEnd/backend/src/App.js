@@ -169,7 +169,7 @@ const editOrView = () =>{
                 {console.log(editPr)}
                 <div  className={inputDiv}>
                 <input className={inputStyle} type="text" value={editInput?null:editPr.title} />
-                <div  className="cursor-pointer " onClick={editOrView}><BorderColorIcon/></div>
+                <div  className="cursor-pointer " onClick={editOrView} r><BorderColorIcon/></div>
                  </div>
 
                  <div  className={inputDiv}>
@@ -209,8 +209,8 @@ const editOrView = () =>{
 </div>
 
 {toggle===1 && <Shirts checkSubmit = {checkSubmit}/>}
-{toggle===2 && <Pants/>}
-{toggle===3 && <Mobile/>}
+{toggle===2 && <Pants checkSubmit = {checkSubmit}/>}
+{toggle===3 && <Mobile checkSubmit = {checkSubmit}/>}
 
 </div>
 

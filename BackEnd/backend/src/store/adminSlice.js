@@ -1,12 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-const render = true;
+const renderData = true;
 
 
 const renderSlice = createSlice({
     name: 'render',
-    initialState:render,
+    initialState:renderData,
     reducers : {
         changeRender(state){
             return !state;

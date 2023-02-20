@@ -1,7 +1,7 @@
 import React , {useState , useEffect} from 'react';
 import Product from './Product';
 import axios from 'axios';
-
+import { useSelector } from 'react-redux';
 
 
 
@@ -10,21 +10,32 @@ const Products = () => {
  
 
         const [dataProduct , setDataProduct] = useState([]);
+
+        const categoryClicked = useSelector((state) => state.rootReducer.categoryClick);
+
+        console.log(categoryClicked);
+
+
+        const fetchProducts = async (product) =>{
+            try{
+                const res = await axios(product);
+                setDataProduct(res.data);
+                     }catch(error){
+             console.log(error);
+                     }
+        };
+       
         
         useEffect(() => {
-            const fetchProducts = async () =>{
-        
-                try{
-           const res = await axios('/shirt');
-           setDataProduct(res.data);
-                }catch(error){
-        console.log(error);
-                }
-        
-        };
-        fetchProducts();
-        
-        }, []);
+
+if(categoryClicked==='shirts'){
+    fetchProducts('/shirt');
+}else if(categoryClicked==='pants'){
+    fetchProducts('/pant');
+}else{
+    fetchProducts('/mobiles');
+}
+       }, [categoryClicked]);
 
 
 
