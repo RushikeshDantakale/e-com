@@ -43,17 +43,22 @@ const PurchasedProduct = (props) => {
                     </div>
                 </div>
                     <div className=' flex flex-row justify-around  flex-auto'> 
-                    <Counter id={props.cartItem._id} />
+                    <div className='flex items-center mr-[5px]'>
+                    <Counter  id={props.cartItem._id} />
+                    </div>
+                    
 
-                    <div>
-                        <button className='text-red-500 font-semibold p-[10px] rounded-lg hover:bg-red-300' onClick={()=>{removeItem(props.cartItem._id)}} ><DeleteIcon fontSize='large'/></button>
+                    <div className='flex items-center'>
+                        <button className='text-red-500 font-semibold p-[10px] rounded-lg hover:bg-red-300 mr-[5px]' onClick={()=>{removeItem(props.cartItem._id)}} ><DeleteIcon fontSize='large'/></button>
+
+                      
                     </div>
                    
                     </div>
-
+                   
                    
                 </div>
-            
+                
         </>
     );
 }

@@ -28,7 +28,7 @@ console.log(error);
 
 
     return (
-        <div className='grid grid-cols-3 justify-between items-center p-5'>
+        <div className='grid md:grid-cols-3 sm:grid-cols-2 justify-between items-center p-5'>
 
      {dataCatagory.map((category)=>{
 

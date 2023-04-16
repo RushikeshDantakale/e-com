@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Slider from '../components/Slider';
@@ -10,8 +9,8 @@ const Home = () => {
     return (
         <div>
         <div className='fixed top-0 left-0 right-0 z-10 bg-white'>
-            <Navbar />
-            </div>
+            <Navbar className='z-[11]' />
+        </div>
 
             <div className='mt-[50px]'>
             <Slider />

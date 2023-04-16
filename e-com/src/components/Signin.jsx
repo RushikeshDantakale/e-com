@@ -65,9 +65,9 @@ const Signin = () => {
 
     return (
         <div className='backgroundImage  pt-[80px]'>
-         <div className='flex flex-cols items-center mx-[230px] rounded py-[15px] bg-white shadow-2xl pl-[30px]'>
+         <div className='md:flex md:flex-cols items-center md:mx-[230px] mx-[50px] rounded rounded-2xl bg-white shadow-2xl '>
       
-        <div className="flex-[0.8] bg-white pt-4  w-[400px] h-[550px]  shadow-2xl rounded-l-2xl p-[20px]">
+        <div className="flex-[0.8] bg-white pt-4  md:w-[400px] w-[100%] md:h-[550px]  shadow-2xl md:rounded-l-2xl rounded-2xl p-[20px]">
         <label className='font-bold text-[35px] ml-[20px] '>Signin</label><Link to="/Signup">
         <div className='text-gray-400 text-[15px] cursor-pointer pl-[20px] mt-[10px]'>Doesn't have an account yet? <span className='underline  underline-offset-2 text-purple-500 font-bold '>Sign Up</span></div>
         </Link>
@@ -93,7 +93,7 @@ const Signin = () => {
            </form>
            </div>
 
-           <div className='flex-[1.2] p-2 loginImage h-[550px] w-[100%] shadow-2xl rounded-r-2xl '> 
+           <div className='md:flex hidden  flex-[1.2]   p-2 loginImage h-[550px] w-[100%] shadow-2xl rounded-r-2xl '> 
           
 
            </div>

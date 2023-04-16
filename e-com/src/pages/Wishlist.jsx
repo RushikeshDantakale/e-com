@@ -1,16 +1,24 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import { useDispatch } from 'react-redux';
-import Footer from './Footer';
-import Navbar from './Navbar';
-import Newsletter from './Newsletter';
+import {useSelector , useDispatch} from 'react-redux';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import Newsletter from '../components/Newsletter';
+import { add } from '../store/cartSlice';
+
 
 
 const Wishlist = () => {
 
     const wishlistItems = useSelector((state)=> state.rootReducer.wishlist);
 
+    const dispatch = useDispatch();
+
     console.log(wishlistItems);
+
+    const addCart = (item) =>{
+        console.log(item);
+        dispatch(add(item));
+    }
 
 
     return (
@@ -26,7 +34,10 @@ const Wishlist = () => {
           <div className='flex flex-col items-center justify-between shadow-2xl border-2 border-gray-300 my-[10px]'>
            <div className=' font-semibold text-[20px] p-[10px]'>{item.title}</div>  
            <div className='w-full h-full '> 
-            <img className='cover' src={`http://localhost:4000/${item.imageUrl}`} />
+            <img className='cover' src={`http://localhost:4000/${item.imageUrl}`} alt='wishlist_img'/>
+            <div> {item.price}</div>
+            <div> {item.desc}</div>
+            <button className='' onClick={addCart(item)}>Add To Cart</button>
             </div>
             </div> 
              

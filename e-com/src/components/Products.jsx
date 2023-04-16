@@ -24,6 +24,8 @@ const Products = () => {
              console.log(error);
                      }
         };
+
+
        
         
         useEffect(() => {
@@ -33,7 +35,7 @@ if(categoryClicked==='shirts'){
 }else if(categoryClicked==='pants'){
     fetchProducts('/pant');
 }else{
-    fetchProducts('/mobiles');
+    fetchProducts('/mobile');
 }
        }, [categoryClicked]);
 
@@ -41,12 +43,13 @@ if(categoryClicked==='shirts'){
 
 
     return (
-        <div className='grid grid-cols-5 p-5 items-center justify-center gap-5'>
+        <div className='grid md:grid-cols-5 grid-cols-2  md:p-5 items-center justify-center gap-5'>
             {
                 dataProduct.map((product , index)=>{
                 return (<Product
                     product= {product}
                     key = {index}
+                    
                 />)
             })
 

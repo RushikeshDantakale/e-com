@@ -30,11 +30,7 @@ router.post('/register', async (req,res)=>{
     console.log(req.body);
 
 const {name , email, phone , password ,cpassword} =req.body;
-console.log(name);
-console.log(email);
-console.log(phone);
-console.log(password);
-console.log(cpassword);
+
 
 if(!name || !email || !phone || !password || !cpassword){
     return res.status(422).json({error:"Please fill the fields properly!"});
@@ -68,6 +64,7 @@ console.log(err);
 }
 
 })
+
 
 //loginroute
 router.post('/login',async (req,res)=>{

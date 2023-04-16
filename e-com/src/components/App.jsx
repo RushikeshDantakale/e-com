@@ -10,7 +10,9 @@ import store from "../store/store";
 
 import Signup from "./Signup";
 import Signin from "./Signin";
-import Wishlist from "./Wishlist";
+import Wishlist from '../pages/Wishlist';
+import PaymentErrorPage from "../pages/PaymentErrorPage";
+import PaymentSuccessfulPage from "../pages/PaymentSuccessfulPage";
 
 //APP.js file
 
@@ -35,7 +37,8 @@ function App() {
 <Route exact path="/signup" element={<Signup/>} />
 <Route exact path="/signin" element={<Signin/>} />
 <Route exact path="/wishlist" element={<Wishlist/>} />
-
+<Route exact path="/paymentSuccessful" element={<PaymentSuccessfulPage/>} />
+<Route exact path="/paymentFailed" element={<PaymentErrorPage/>} />
   </Routes>
   </BrowserRouter>
 </Provider>

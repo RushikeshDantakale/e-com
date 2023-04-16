@@ -86,7 +86,7 @@ const handleAdd = (item)=> {
            
            
          
-        <div className={`flex flex-1 flex-col items-center justify-center min-w-[250px] min-h-[300px] overflow-hidden rounded-md  m-2 `+ hoverEffect } onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+        <div className={`flex flex-1 flex-col items-center justify-center w-[100%] min-h-[300px]  overflow-hidden rounded-md  m-2 `+ hoverEffect } onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
             <img className='w-[100%] h-[250px] bg-contain bg-center' src={`http://localhost:4000/${item.product.imageUrl}`} onClick={()=>{viewProduct(item)}} alt=""/>
             <div className='pt-[3px] font-semibold text-[23px]'>{item.product.title}</div>
             <div className='pt-[3px] text-white font-semibold text-[23px] w-[100%] bg-purple-500 flex items-center justify-center line-through'>₹{item.product.price}</div>

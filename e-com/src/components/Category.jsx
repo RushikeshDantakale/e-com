@@ -11,9 +11,7 @@ const Category = (props) => {
         console.log(title);
         dispatch(changeCategory(title));
     }
-
-
-    
+   
     return (
         <div className='m-2 shadow-2xl overflow-hidden relative' onClick= {()=>{handleClick(props.title)}}>
 
@@ -24,8 +22,7 @@ const Category = (props) => {
 
     <Link to="/category" ><button className='btn ' >See more</button></Link> 
 </div>
-
-           
+          
         </div>
     );
 }

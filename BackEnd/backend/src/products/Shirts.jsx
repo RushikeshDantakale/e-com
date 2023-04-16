@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -59,26 +59,7 @@ const Shirts = ({checkSubmit}) => {
             price,
             quantity} = shirt;
 
-        
-
-
-        // const res =await fetch('/shirt/upload',{
-        //     'method':'POST',
-        //     'headers':{
-        //         'Content-Type':'application/json'
-        //     },
-        //     'body':JSON.stringify({
-        //         title,
-        //         image,
-        //         desc,
-        //         price,
-        //         quantity
-        //     })
-        // })
-        
-   
-        
-      
+ 
 
         try{
             
@@ -110,6 +91,8 @@ const Shirts = ({checkSubmit}) => {
             'theme':'colored',
             'pauseOnHover':false
         })
+        setShirt({ title:'', desc:'',image : '' ,price:'', quantity:'' });
+        setImg64('');
     }
         }
         
@@ -120,12 +103,14 @@ const Shirts = ({checkSubmit}) => {
                 'pauseOnHover':false
             });
             console.log(error.response.data.error);
+            setShirt({ title:'', desc:'',image : '' ,price:'', quantity:'' });
+            setImg64('');
         }
     }
     
     return (
         <div className='w-[100%] h-[95%]'>
-        <ToastContainer/>
+        
         <form  method="POST">
         <div className='p-4'>
         <div className='my-2 text-2xl  font-bold'>Enter Your Shirt's Details</div>

@@ -5,7 +5,7 @@ const mobileSchema = new mongoose.Schema({
     type : String,
     required : true
     },
-    image : {
+    imageUrl : {
         type : String,
     },
     desc : {
@@ -30,7 +30,7 @@ const mobileSchema = new mongoose.Schema({
     backCamera : {
         type : String
     },
-    Rom : {
+    rom : {
         type : String,
         required : true
     }

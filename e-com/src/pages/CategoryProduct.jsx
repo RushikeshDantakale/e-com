@@ -16,7 +16,7 @@ const CategoryProduct = () => {
         <div>
             <Navbar/>
             <div className='flex flex-col p-5'>
-            <h1 className='text-[30px]'>Men's Cloth</h1>
+            <h1 className='text-[30px]'>{(categoryClicked==='mobiles')?(<div>Mobiles</div>):(<div>Men's {categoryClicked}</div>)}</h1>
             <div className='flex items-center justify-between mt-3'>
             <div className='flex '>
             <p>Filter by </p>
