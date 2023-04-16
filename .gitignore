@@ -2,3 +2,5 @@ node_modules/
 BackEnd/server/uploads/Shirts
 BackEnd/server/uploads/Pants
 BackEnd/server/uploads/Mobiles
+.env
+BackEnd/server/config.env
